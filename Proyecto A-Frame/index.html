@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+
+
+    <a-scene>
+      <a-assets>
+        <img id="modern_buildings_night" src="modern_buildings_night.jpg">
+        <audio id="musica" src="musica.mp3" preload="auto"></audio>
+        <a-asset-item id="apartamento-o" src="./assets/apart.obj"></a-asset-item>
+        <a-asset-item id="apartamento-m" src="./assets/apart.mtl"></a-asset-item>
+        <a-asset-item id="piso" src="./assets/piso.obj"></a-asset-item>
+        <a-asset-item id="pisom" src="./assets/piso.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-plane  scale = "500 500 500" rotation="-90 0 0" color="#2d4931" material="roughness: 1"></a-plane>
+      <a-entity obj-model="obj: #apartamento-o; mtl: #apartamento-m" );></a-entity>
+      <a-entity obj-model="obj: #piso; mtl: #pisom" )position=" -1 -1 -1";></a-entity>
+      
+      <a-sky src="#modern_buildings_night"></a-sky>
+      <a-entity id="rig" position="0 0 0">
+        <a-camera id="camera" sound="src: #musica; autoplay: true"></a-camera>
+      </a-entity>
+
+
+
+    </a-scene>
+  </body>
+</html>
