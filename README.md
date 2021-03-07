@@ -4,4 +4,3 @@ Decidimos optar por el modelo del apartamento, ya que se podría visualizar de m
 
 ## Problemas
 
-Hubieron al inicio varios problemas con el modelado
