@@ -1,31 +1,42 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment+3D model</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+    <a-scene physics="gravity: -9.8">
+        <!--Creamos nuestra biblioteca de assets-->
+        <a-assets>
+          <img id="modern_buildings_night" src="venice_sunset_8k.png">
+          <audio id="musica" src="ambiente.mp3" preload="auto"></audio>
+          <a-asset-item id="apartamento-o" src="./assets/apart.obj"></a-asset-item>
+          <a-asset-item id="apartamento-m" src="./assets/apart.mtl"></a-asset-item>
+        </a-assets>
+        <a-entity obj-model="obj: #apartamento-o; mtl: #apartamento-m" position="-10 0 8"></a-entity>
+        <!--Importamos a la escena el modelo 3D-->
+        <a-sky src="#modern_buildings_night" rotation="0 90 0" radius="100"></a-sky>
+        
+        <a-entity id="rig" movement-controls kinematic-body>
+            <a-entity camera sound="src: #musica; autoplay: true; volume:0.3; loop:true" position="0 1.8 0" look-controls="pointerLockEnabled: true"></a-entity>
+        </a-entity>
 
-
-    <a-scene>
-      <a-assets>
-        <img id="modern_buildings_night" src="modern_buildings_night.jpg">
-        <audio id="musica" src="musica.mp3" preload="auto"></audio>
-        <a-asset-item id="apartamento-o" src="./assets/apart.obj"></a-asset-item>
-        <a-asset-item id="apartamento-m" src="./assets/apart.mtl"></a-asset-item>
-        <a-asset-item id="piso" src="./assets/piso.obj"></a-asset-item>
-        <a-asset-item id="pisom" src="./assets/piso.mtl"></a-asset-item>
-      </a-assets>
-
-      <a-plane  scale = "500 500 500" rotation="-90 0 0" color="#2d4931" material="roughness: 1"></a-plane>
-      <a-entity obj-model="obj: #apartamento-o; mtl: #apartamento-m" );></a-entity>
-      <a-entity obj-model="obj: #piso; mtl: #pisom" )position=" -1 -1 -1";></a-entity>
-      
-      <a-sky src="#modern_buildings_night"></a-sky>
-      <a-entity id="rig" position="0 0 0">
-        <a-camera id="camera" sound="src: #musica; autoplay: true"></a-camera>
-      </a-entity>
-
-
-
+        <a-plane static-body position="0 -0.5 0" height="12" width="21" rotation="-90 0 0" opacity="0.0"></a-plane>
+        <a-plane static-body position="-12 3.3 0" height="12" width="21" rotation="90 0 0" opacity="0.0"></a-plane>
+        <a-plane static-body position="0 4 -7" height="12" width="21" rotation="0 0 0" opacity="0.0"></a-plane>
+        <a-plane static-body position="0 4 6" height="12" width="21" rotation="0 0 0" opacity="0.0"></a-plane>
+        <a-plane static-body position="-10 4 0" height="12" width="12" rotation="0 90 90" opacity="0.0"></a-plane>
+        <a-plane static-body position="11.5 4 0" height="12" width="12" rotation="180 90 90" opacity="0.0"></a-plane>
+        <a-plane static-body position="3.5 0 5" height="3" width="12" rotation="-58 90 90" opacity="0.0"></a-plane>
+        <a-plane  position="10.3 4 -1" height="12" width="12" rotation="180 90 90" roughness="100"></a-plane>
+        
+        <!--a-entity obj-model="obj: #dragon; mtl: #mtlDragon" position= "0 2.5 -5" rotate="0 -90 0" scale="0.01 0.01 0.01"></a-entity-->
     </a-scene>
-  </body>
+</body>
 </html>
